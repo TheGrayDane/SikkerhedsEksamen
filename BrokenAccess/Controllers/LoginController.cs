@@ -29,7 +29,10 @@ namespace BrokenAccess.Controllers
             if (userFound != null)
             {
                 Storage.LoggedIn().Add(userFound);
-                return Ok(userFound.Id);
+                var response = new UserResponseModel();
+                response.Id = userFound.Id;
+                response.UserName = userFound.UserName;
+                return Ok(response);
             }
 
                 return NotFound("No user found with Email or Access Code");
