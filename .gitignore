@@ -1,0 +1,319 @@
+## .gitignore for .NET Core / .NET and Visual Studio
+
+# ---------------------------------------------------------------------------
+# Build output
+# ---------------------------------------------------------------------------
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Ll]og/
+[Ll]ogs/
+out/
+artifacts/
+
+# MSBuild logs
+msbuild.log
+msbuild.err
+msbuild.wrn
+msbuild.binlog
+*.binlog
+
+# ---------------------------------------------------------------------------
+# Visual Studio
+# ---------------------------------------------------------------------------
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.rsuser
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+*.sln.iml
+
+# Visual Studio cache / options
+*.[Cc]ache
+!?*.[Cc]ache/
+*.VC.db
+*.VC.VC.opendb
+*.opendb
+*.aps
+*.ncb
+*.sdf
+*.cachefile
+*.pch
+*.ipch
+*.psess
+*.vsp
+*.vspx
+*.sap
+*.tlog
+*.vspscc
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.vspx
+*.vbpidb
+*.vbw
+
+# Visual Studio 6 build log
+*.plg
+*.opt
+*.vbp
+*.dsw
+*.dsp
+
+# Visual Studio temp / auto-generated
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+ServiceFabricBackup/
+*.rptproj.bak
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pfx
+*.publishsettings
+orleans.codegen.cs
+~$*
+*~
+*.dbmdl
+*.[Pp]ublish.xml
+*.azurePubxml
+*.pubxml
+*.pubxml.user
+*.publishproj
+
+# ---------------------------------------------------------------------------
+# Visual Studio Code
+# ---------------------------------------------------------------------------
+# Ignore personal settings, but keep shared team config
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+.history/
+*.vsix
+*.code-workspace
+.ionide/
+
+# ---------------------------------------------------------------------------
+# JetBrains Rider
+# ---------------------------------------------------------------------------
+# Ignore the whole .idea folder by default
+.idea/
+*.iml
+*.ipr
+*.iws
+.idea_modules/
+cmake-build-*/
+out/
+
+# Rider / ReSharper / dotCover / dotTrace / dotMemory
+*.sln.DotSettings.user
+*.csproj.DotSettings.user
+*.DotSettings.user
+_ReSharper.Caches/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+.idea/**/contentModel.xml
+.idea/**/httpRequests
+.idea/**/azureSettings.xml
+.idea/**/aws.xml
+.idea/**/gradle.xml
+.idea/**/libraries
+.idea/**/mongoSettings.xml
+.idea/replstate.xml
+.idea/sonarlint/
+.idea/caches/build_file_checksums.ser
+fabric.properties
+*.dotCover
+*.dotTrace
+*.dotMemory
+
+# ---------------------------------------------------------------------------
+# .NET Core / .NET
+# ---------------------------------------------------------------------------
+project.lock.json
+project.fragment.lock.json
+artifacts/
+**/Properties/launchSettings.json
+!**/Properties/launchSettings.json.template
+
+# .NET Core publish output
+publish/
+PublishOutput/
+
+# NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+!**/[Pp]ackages/repositories.config
+*.nuget.props
+*.nuget.targets
+.nuget/
+!.nuget/NuGet.exe
+nuget.exe
+**/[Pp]ackages/*
+*.nuget.dgspec.json
+project.assets.json
+
+# ASP.NET Core
+wwwroot/lib/
+node_modules/
+bower_components/
+jspm_packages/
+.sass-cache/
+**/wwwroot/dist/
+**/wwwroot/uploads/
+App_Data/
+*.pubxml
+
+# User secrets and local config (keep secrets out of source control!)
+secrets.json
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.local.json
+*.env
+.env
+.env.*
+!.env.example
+
+# Entity Framework
+Migrations/*.Designer.cs.bak
+*.mdf
+*.ldf
+*.ndf
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+
+# ---------------------------------------------------------------------------
+# Testing and coverage
+# ---------------------------------------------------------------------------
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.trx
+*.coverage
+*.coveragexml
+coverage*.json
+coverage*.xml
+coverage*.info
+*.lcov
+TestResults/
+CoverageReport/
+.coverage/
+nunit-*.xml
+*.VisualState.xml
+TestResult.xml
+[Dd]ebug/
+**/*.testlog
+.vstest/
+*.dotCover
+*.[Cc]over
+_NCrunch_*
+.NCrunch_*
+*.ncrunch*
+.*crunch*.local.xml
+nCrunchTemp_*
+.mfractor/
+.localhistory/
+
+# Benchmark.NET
+BenchmarkDotNet.Artifacts/
+
+# ---------------------------------------------------------------------------
+# Profiling / diagnostics
+# ---------------------------------------------------------------------------
+*.dtbcache.json
+*.diagsession
+*.DotSettings.user
+*.dmp
+*.mdmp
+
+# ---------------------------------------------------------------------------
+# Azure / Docker / misc tooling
+# ---------------------------------------------------------------------------
+csx/
+*.build.csdef
+ecf/
+rcf/
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+_pkginfo.txt
+*.appx
+*.appxbundle
+*.appxupload
+**/.azure/
+.terraform/
+docker-compose.override.yml
+.dockerignore.local
+
+# Node / frontend tooling often used with ASP.NET Core
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ---------------------------------------------------------------------------
+# Operating system files
+# ---------------------------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
