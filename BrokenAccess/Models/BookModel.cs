@@ -10,6 +10,7 @@
 
     public class BookPostModel
     {
+        public int Id { get; set; } = 0;
         public string Title { get; set; }
         public string Author { get; set; }
         public float Price { get; set; }

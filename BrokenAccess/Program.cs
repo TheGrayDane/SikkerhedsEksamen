@@ -8,7 +8,7 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
-app.MapGet("/", () => "Examens Projekt til Sikkerhed For Udviklere : Go Lars Nysom");
+app.MapGet("/", () => "Examens Projekt til Sikkerhed For Udviklere");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
