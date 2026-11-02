@@ -25,11 +25,9 @@ namespace BrokenAccess.Controllers
 
             var books = Storage.BookList();
 
-            var LastUsedId = books.LastOrDefault().Id;
-
             var book = new BookModel
             {
-                Id = LastUsedId + 1,
+                Id = books.LastOrDefault().Id + 1,
                 Title = newBook.Title,
                 Author = newBook.Author,
                 Price = newBook.Price
