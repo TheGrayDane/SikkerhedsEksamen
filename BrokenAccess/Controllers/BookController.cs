@@ -51,7 +51,7 @@ namespace BrokenAccess.Controllers
                 return BadRequest("User not logged in"); //User is not logged in, cannot update book
 
             var books = Storage.BookList();
-            var book = books.FirstOrDefault(b => b.Id == updatedBook.I);
+            var book = books.FirstOrDefault(b => b.Id == updatedBook.Id);
             if (book == null)
                 return NotFound("No book found"); //Book not found
 
