@@ -49,6 +49,18 @@ namespace BrokenAccess.Data
             return _extloggedInUsers;
         }
 
+        public static UserExtModel? GetUserExt(Guid userId)
+        {
+            var result = new UserExtModel();
+            int found = -1;
+            found = Storage.ExtloggedInUsers().FirstOrDefault(x => x.Key == userId).Value;
+            
+            if(found > 0)
+                result = _extUsers.FirstOrDefault(x => x.Id == found);
+
+            return result;
+        }
+
         private static List<UserModel> BuildUserList()
         {
             List<UserModel> users = new List<UserModel>

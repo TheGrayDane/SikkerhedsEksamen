@@ -24,10 +24,9 @@ namespace BrokenAccess.Controllers
 
 
             var books = Storage.BookList();
-
             var book = new BookModel
             {
-                Id = books.LastOrDefault().Id + 1,
+                Id = books.Count() + 1,
                 Title = newBook.Title,
                 Author = newBook.Author,
                 Price = newBook.Price
@@ -44,7 +43,24 @@ namespace BrokenAccess.Controllers
         [HttpPut]
         public IActionResult UpdateBook([FromBody] BookPostModel updatedBook)
         {
+            if (updatedBook.UseGuid)
+            {
+                var user = Storage.GetUserExt(updatedBook.UserGuid);
+                if (user is not { MayUpdate: true }) 
+                    return BadRequest("Not allowed to update book");
+                
+                var updBooks = Storage.BookList();
+                var b = updBooks.FirstOrDefault(b => b.Id == updatedBook.Id);
+                if (b == null)
+                    return NotFound("No book found"); //Book not found
 
+                b.Title = updatedBook.Title;
+                b.Author = updatedBook.Author;
+                b.Price = updatedBook.Price;
+
+                return Ok("Book updated"); //Book updated successfully
+            }
+                
             if (Storage.LoggedIn().FirstOrDefault(u => u.Id == updatedBook.UserId) == null)
                 return BadRequest("User not logged in"); //User is not logged in, cannot update book
 
