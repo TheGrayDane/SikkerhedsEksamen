@@ -5,14 +5,18 @@ namespace BrokenAccess.Data
     public static class Storage
     {
         private static List<UserModel> _users;
+        private static List<UserExtModel> _extUsers;
         private static List<UserModel> _loggedInUsers;
         private static List<BookModel> _books;
+        private static Dictionary<Guid, int> _extloggedInUsers;
 
         static Storage()
         {
             _users = BuildUserList();
             _books = BuildBookList();
+            _extUsers = BuildExtUserList();
             _loggedInUsers = new List<UserModel>();
+            _extloggedInUsers = new Dictionary<Guid, int>();
         }
 
         public static bool IsUserLoggedIn(int userId)
@@ -25,6 +29,10 @@ namespace BrokenAccess.Data
         {
             return _users;
         }
+        public static List<UserExtModel> UserExtList()
+        {
+            return _extUsers;
+        }
 
         public static List<BookModel> BookList()
         {
@@ -36,6 +44,11 @@ namespace BrokenAccess.Data
             return _loggedInUsers;
         }
 
+        public static Dictionary<Guid, int> ExtloggedInUsers()
+        {
+            return _extloggedInUsers;
+        }
+
         private static List<UserModel> BuildUserList()
         {
             List<UserModel> users = new List<UserModel>
@@ -45,8 +58,19 @@ namespace BrokenAccess.Data
                     new UserModel { Id = 3, UserName = "john", PassWord = "doe" }
                 };
 
-            return users;        }
+            return users;        
+        }
+        private static List<UserExtModel> BuildExtUserList()
+        {
+            List<UserExtModel> users = new List<UserExtModel>
+            {
+                new UserExtModel { Id = 1, UserName = "admin", PassWord = "1234", IsAdmin = true, MayUpdate = true },
+                new UserExtModel { Id = 2, UserName = "donald", PassWord = "duck" },
+                new UserExtModel { Id = 3, UserName = "john", PassWord = "doe" }
+            };
 
+            return users;        
+        }
         private static List<BookModel> BuildBookList()
         {
             List<BookModel> books = new List<BookModel>

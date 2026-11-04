@@ -60,7 +60,7 @@ namespace BrokenAccess.Controllers
             return Ok("Book updated"); //Book updated successfully
         }
 
-        [HttpPost]
+        [HttpDelete]
         public IActionResult DeleteBook([FromBody] BookPostModel deleteBook)
         {
 

@@ -22,20 +22,44 @@ namespace BrokenAccess.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login([FromBody] UserModel user)
+        public IActionResult Login([FromBody] LoginModel login)
         {
-            var users = Storage.UserList();
-            var userFound = users.FirstOrDefault(u => u.UserName == user.UserName && u.PassWord == user.PassWord);
-            if (userFound != null)
-            {
-                Storage.LoggedIn().Add(userFound);
-                var response = new UserResponseModel();
-                response.Id = userFound.Id;
-                response.UserName = userFound.UserName;
-                return Ok(response);
-            }
-
-                return NotFound("No user found with Email or Access Code");
+                if (login.UseExtModel)
+                {
+                    
+                    var users = Storage.UserExtList();
+                    var userFound = users.FirstOrDefault(u => u.UserName == login.UserName && u.PassWord == login.PassWord);
+                    
+                    if (userFound == null)
+                        return NotFound("No user found with Email or Access Code");
+                    
+                    var guid = Guid.NewGuid();
+                    Storage.ExtloggedInUsers().Add(guid, userFound.Id);
+                    var extResponse = new UserExtResponseModel()
+                    {
+                        Id = guid,
+                        IsAdmin = userFound.IsAdmin,
+                        UserName = userFound.UserName,
+                        MayUpdate = userFound.MayUpdate,
+                        MayDelete = userFound.MayDelete
+                    };
+                    return Ok(extResponse);
+                }
+                else
+                {
+                    var users = Storage.UserList();
+                    var userFound = users.FirstOrDefault(u => u.UserName == login.UserName && u.PassWord == login.PassWord);
+                    if (userFound == null)
+                        return NotFound("No user found with Email or Access Code");
+                    
+                    Storage.LoggedIn().Add(userFound);
+                    var response = new UserResponseModel()
+                    {
+                        Id = userFound.Id,
+                        UserName = userFound.UserName
+                    };
+                    return Ok(response);
+                }
         }
     }
 }

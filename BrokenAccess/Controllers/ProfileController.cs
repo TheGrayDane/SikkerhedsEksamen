@@ -17,6 +17,19 @@ namespace BrokenAccess.Controllers
             return Ok(userFound);
         }
 
+        [HttpPost]
+        public IActionResult ExtGetProfile([FromBody] ProfileRequestModel user)
+        {
+            int found = -1;
+            found = Storage.ExtloggedInUsers().FirstOrDefault(x => x.Key == user.UserId).Value;
+            if(found < 0)
+                return NotFound("Error in updating user");
+            
+            var users = Storage.UserList();
+            var userFound = users.FirstOrDefault(u => u.Id == found);
+            return Ok(userFound);
+            
+        }
 
         [HttpPut]
         public IActionResult UpdateProfile(UserModel user)
